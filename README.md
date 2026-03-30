@@ -1,11 +1,84 @@
-# Dutchdb
+# DutchDB 🦆🇳🇱
 
-This repository is based on https://github.com/duckdb/extension-template, check it out if you want to build and ship your own DuckDB extension.
+DutchDB is a DuckDB extension that lets you write SQL queries in Dutch. Load the extension, enable the parser, and query away using fully Dutch keywords.
 
 ---
 
-This extension, Dutchdb, allow you to ... <extension_goal>.
+## Gebruik (Usage)
 
+```sql
+LOAD dutchdb;
+CALL enable_peg_parser();
+```
+
+### Querying
+
+```sql
+SELECTEER * VAN tabel WAARBIJ kolom = 'waarde';
+SELECTEER * VAN tabel GROEP PER kolom MITS AANTAL(*) > 1;
+SELECTEER * VAN tabel VOLGORDE PER kolom OPLOPEND;
+SELECTEER * VAN tabel BEGRENZING 10 VERSCHUIVING 5;
+```
+
+### Filteren & logica
+
+```sql
+WAARBIJ a EN b
+WAARBIJ a OF b
+WAARBIJ a NIET IN (1, 2, 3)
+WAARBIJ a TUSSEN 1 EN 10
+WAARBIJ a ZOALS '%patroon%'
+WAARBIJ a IS LEEG / IS NIET LEEG
+```
+
+### Joins
+
+```sql
+VAN a SAMENVOEGEN b OP a.id = b.id
+VAN a LINKS SAMENVOEGEN b OP a.id = b.id
+VAN a VOLLEDIG SAMENVOEGEN b OP a.id = b.id
+VAN a KRUIS SAMENVOEGEN b
+```
+
+### Gegevens wijzigen
+
+```sql
+TOEVOEGEN AAN tabel WAARDEN (1, 'a');
+BIJWERKEN tabel INSTELLEN kolom = 1 WAARBIJ id = 1;
+VERWIJDEREN VAN tabel WAARBIJ id = 1;
+```
+
+### DDL
+
+```sql
+MAAK TABEL naam (id GEHEEL_GETAL, naam TEKST, gewicht KOMMAGETAL);
+GOOI_WEG TABEL naam;
+WIJZIGEN TABEL naam BIJVOEGEN KOLOM x GETAL;
+```
+
+### Verzamelingen
+
+```sql
+SELECTEER ... UNIE SELECTEER ...
+SELECTEER ... DOORSNEDE SELECTEER ...
+SELECTEER ... BEHALVE SELECTEER ...
+```
+
+### Condities
+
+```sql
+GEVAL WANNEER x = 1 DAN 'een' ANDERS 'ander' EINDE
+```
+
+### Volledig voorbeeld
+
+```sql
+MAAK TABEL eend (id GEHEEL_GETAL, naam TEKST, gewicht KOMMAGETAL);
+TOEVOEGEN AAN eend WAARDEN (1, 'Donald', 1.2), (2, 'Daffy', 1.5);
+SELECTEER * VAN eend WAARBIJ gewicht > 1.3 VOLGORDE PER naam;
+```
+
+---
 
 ## Building
 ### Managing dependencies
@@ -33,17 +106,12 @@ The main binaries that will be built are:
 - `dutchdb.duckdb_extension` is the loadable binary as it would be distributed.
 
 ## Running the extension
-To run the extension code, simply start the shell with `./build/release/duckdb`.
+Start the shell with `./build/release/duckdb`, then load and enable the Dutch parser:
 
-Now we can use the features from the extension directly in DuckDB. The template contains a single scalar function `dutchdb()` that takes a string arguments and returns a string:
-```
-D select dutchdb('Jane') as result;
-┌───────────────┐
-│    result     │
-│    varchar    │
-├───────────────┤
-│ Dutchdb Jane 🐥 │
-└───────────────┘
+```sql
+LOAD './build/release/extension/dutchdb/dutchdb.duckdb_extension';
+CALL enable_peg_parser();
+SELECTEER 42 ALS antwoord;
 ```
 
 ## Running the tests

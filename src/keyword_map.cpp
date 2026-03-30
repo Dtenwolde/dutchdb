@@ -452,7 +452,7 @@ void PEGKeywordHelper::InitializeKeywordMaps() { // Renamed for clarity
 	colname_keyword_map.insert("rij");
 	colname_keyword_map.insert("structuur");
 	colname_keyword_map.insert("teken");
-	colname_keyword_map.insert("tekstreeks");
+	colname_keyword_map.insert("tekst");
 	colname_keyword_map.insert("tijd");
 	colname_keyword_map.insert("tijdstempel");
 	colname_keyword_map.insert("tussen");

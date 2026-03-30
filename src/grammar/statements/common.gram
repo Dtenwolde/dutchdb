@@ -60,7 +60,7 @@ CharacterType <- ('KARAKTER' 'VARIABEL'?) /
                  ('NATIONAAL' 'KARAKTER' 'VARIABEL'?) /
                  ('NATIONAAL' 'TEKEN' 'VARIABEL'?) /
                  ('NTEKEN' 'VARIABEL'?) /
-                 'TEKSTREEKS'
+                 'TEKST'
 
 IntervalType <- IntervalInterval / IntervalNumber
 IntervalInterval <- 'INTERVAL' Interval?
