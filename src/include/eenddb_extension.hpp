@@ -12,7 +12,7 @@
 
 namespace duckdb {
 
-class DutchdbExtension : public Extension {
+class EenddbExtension : public Extension {
 public:
 	void Load(ExtensionLoader &loader) override;
 	std::string Name() override;

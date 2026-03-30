@@ -1,4 +1,4 @@
-#include "dutchdb_extension.hpp"
+#include "eenddb_extension.hpp"
 
 #include "duckdb/common/exception.hpp"
 #include "duckdb/function/table_function.hpp"
@@ -116,22 +116,22 @@ static void LoadInternal(ExtensionLoader &loader) {
 	ParserExtension::Register(config, DutchParserExtension());
 }
 
-void DutchdbExtension::Load(ExtensionLoader &loader) {
+void EenddbExtension::Load(ExtensionLoader &loader) {
 	LoadInternal(loader);
 }
 
-std::string DutchdbExtension::Name() {
+std::string EenddbExtension::Name() {
 	return "eenddb";
 }
 
-std::string DutchdbExtension::Version() const {
+std::string EenddbExtension::Version() const {
 	return DefaultVersion();
 }
 
 } // namespace duckdb
 
 extern "C" {
-DUCKDB_CPP_EXTENSION_ENTRY(dutchdb, loader) {
+DUCKDB_CPP_EXTENSION_ENTRY(eenddb, loader) {
 	LoadInternal(loader);
 }
 }

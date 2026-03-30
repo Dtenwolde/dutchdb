@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # Set extension name here
-set(TARGET_NAME dutchdb)
+set(TARGET_NAME eenddb)
 
 set(EXTENSION_NAME ${TARGET_NAME}_extension)
 set(LOADABLE_EXTENSION_NAME ${TARGET_NAME}_loadable_extension)
@@ -10,7 +10,7 @@ project(${TARGET_NAME})
 include_directories(src/include)
 
 set(EXTENSION_SOURCES
-    src/dutchdb_extension.cpp
+    src/eenddb_extension.cpp
     src/keyword_map.cpp
     src/keyword_helper.cpp
     src/matcher.cpp

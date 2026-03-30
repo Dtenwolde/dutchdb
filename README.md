@@ -101,7 +101,7 @@ The main binaries that will be built are:
 ```sh
 ./build/release/duckdb
 ./build/release/test/unittest
-./build/release/extension/dutchdb/eenddb.duckdb_extension
+./build/release/extension/eenddb/eenddb.duckdb_extension
 ```
 - `duckdb` is the binary for the duckdb shell with the extension code automatically loaded.
 - `unittest` is the test runner of duckdb. Again, the extension is already linked into the binary.
@@ -111,7 +111,7 @@ The main binaries that will be built are:
 Start the shell with `./build/release/duckdb`, then load and enable the Dutch parser:
 
 ```sql
-LOAD './build/release/extension/dutchdb/eenddb.duckdb_extension';
+LOAD './build/release/extension/eenddb/eenddb.duckdb_extension';
 CALL enable_dutch_parser();
 SELECTEER 42 ALS antwoord;
 ```

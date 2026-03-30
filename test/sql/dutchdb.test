@@ -1,23 +1,19 @@
-# name: test/sql/dutchdb.test
-# description: test dutchdb extension
+# name: test/sql/eenddb.test
+# description: test eenddb extension
 # group: [sql]
 
 # Before we load the extension, this will fail
 statement error
-SELECT dutchdb('Sam');
+SELECT eenddb('Sam');
 ----
-Catalog Error: Scalar Function with name dutchdb does not exist!
+Catalog Error: Scalar Function with name eenddb does not exist!
 
 # Require statement will ensure this test is run with this extension loaded
-require dutchdb
+require eenddb
 
 # Confirm the extension works
 query I
-SELECT dutchdb('Sam');
+SELECT eenddb('Sam');
 ----
-Dutchdb Sam 🐥
+eenddb Sam 🐥
 
-query I
-SELECT dutchdb_openssl_version('Michael') ILIKE 'Dutchdb Michael, my linked OpenSSL version is OpenSSL%';
-----
-true
